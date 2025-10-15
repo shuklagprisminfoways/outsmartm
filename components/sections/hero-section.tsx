@@ -32,7 +32,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative w-full pt-24 md:pt-24 lg:pt-24 xl:pt-24 pb-6 md:pb-12 lg:pb-20 xl:pb-24 overflow-hidden"
+      className="relative w-full pt-24 md:pt-32 lg:pt-32 xl:pt-32 pb-6 md:pb-12 lg:pb-20 xl:pb-32 overflow-hidden"
     >
       {/* Gradient Animated Background */}
       <AnimatedBackground
@@ -102,7 +102,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative w-full h-full flex justify-center items-center"
           >
-            <div className="relative w-full h-[350px] lg:h-[400px] xl:h-[450px] rounded-xl overflow-hidden shadow-lg">
+            <div className="relative w-full h-[300px] lg:h-[350px] xl:h-[400px] rounded-xl overflow-hidden shadow-lg">
               <Image
                 src="/hero.jpg"
                 alt="Cybersecurity protection illustration"

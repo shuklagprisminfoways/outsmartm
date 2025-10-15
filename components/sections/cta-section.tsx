@@ -13,7 +13,7 @@ export function CtaSection() {
     <section
       id="cta"
       className="w-full py-12 md:py-24 lg:py-32 
-  dark:bg-gradient-to-br dark:from-red-950/30 dark:to-gray-950/30 
+  dark:bg-gradient-to-br dark:from-blue-950/30 dark:to-blue-950/30 
   bg-gradient-to-br from-[#2596be]/30 to-[#1e7da1]/30"
     >
       <div className="container px-6 md:px-8">
