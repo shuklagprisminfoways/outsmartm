@@ -104,7 +104,7 @@ export function HeroSection() {
           >
             <div className="relative w-full h-[300px] lg:h-[350px] xl:h-[400px] rounded-xl overflow-hidden shadow-lg">
               <Image
-                src="/hero.jpg"
+                src="/hero.webp"
                 alt="Cybersecurity protection illustration"
                 fill
                 className="object-cover object-center"

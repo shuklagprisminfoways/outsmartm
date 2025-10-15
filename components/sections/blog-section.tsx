@@ -28,7 +28,7 @@ export function AboutSection() {
               <CardContent className="p-0 h-full">
                 <div className="relative w-full h-full min-h-[400px]">
                   <Image
-                    src="/about.jpg" // keep about.jpg inside public/
+                    src="/about.webp" // keep about.jpg inside public/
                     alt="About Cybersecurity"
                     fill
                     className="object-cover"

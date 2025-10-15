@@ -12,7 +12,7 @@ export function SiteFooter() {
             <Link href="/" className="flex items-center space-x-2 z-10">
               {/* Light mode logo */}
               <Image
-                src="/logo1.PNG"
+                src="/logo1.webp"
                 alt="ComponentCraft Logo Light"
                 width={32}
                 height={32}
@@ -21,7 +21,7 @@ export function SiteFooter() {
               />
               {/* Dark mode logo */}
               <Image
-                src="/logo2.png"
+                src="/logo2.webp"
                 alt="ComponentCraft Logo Dark"
                 width={32}
                 height={32}

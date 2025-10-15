@@ -41,7 +41,7 @@ export function SiteHeader() {
         <Link href="/" className="flex items-center space-x-2 z-10">
           {/* Light mode logo */}
           <Image
-            src="/logo1.PNG"
+            src="/logo1.webp"
             alt="Logo Light"
             width={40}
             height={40}
@@ -50,7 +50,7 @@ export function SiteHeader() {
           />
           {/* Dark mode logo */}
           <Image
-            src="/logo2.png"
+            src="/logo2.webp"
             alt="Logo Dark"
             width={40}
             height={40}
@@ -142,7 +142,7 @@ export function SiteHeader() {
                   onClick={closeMobileMenu}
                 >
                   <Image
-                    src="/logo1.PNG"
+                    src="/logo1.webp"
                     alt="Logo Light"
                     width={32}
                     height={32}
@@ -150,7 +150,7 @@ export function SiteHeader() {
                     priority
                   />
                   <Image
-                    src="/logo2.png"
+                    src="/logo2.webp"
                     alt="Logo Dark"
                     width={32}
                     height={32}
