@@ -24,6 +24,15 @@ export function SiteHeader() {
   const scrollPosition = useScrollPosition();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
+  // Disable body scroll when menu open
+  React.useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [mobileMenuOpen]);
+
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
@@ -117,87 +126,82 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Fullscreen Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-background/50 backdrop-blur-sm md:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 bg-background md:hidden flex flex-col"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "tween", duration: 0.3 }}
           >
-            <motion.div
-              className="fixed inset-y-0 right-0 z-1001 w-full max-w-xs bg-background shadow-xl border-l border-border"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            >
-              {/* Mobile Logo + Close */}
-              <div className="flex items-center justify-between p-4 border-b border-border">
-                <Link
-                  href="/"
-                  className="flex items-center space-x-2"
-                  onClick={closeMobileMenu}
-                >
-                  <Image
-                    src="/logo1.webp"
-                    alt="Logo Light"
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 dark:hidden"
-                    priority
-                  />
-                  <Image
-                    src="/logo2.webp"
-                    alt="Logo Dark"
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 hidden dark:block"
-                    priority
-                  />
-                </Link>
-                <button
-                  onClick={closeMobileMenu}
-                  className="p-2 rounded-full hover:bg-muted transition-colors"
-                  aria-label="Close menu"
-                >
-                  <X className="text-foreground h-5 w-5" />
-                </button>
-              </div>
+            {/* Mobile Logo + Close */}
+            <div className="flex items-center justify-between p-4 border-b border-border">
+              <Link
+                href="/"
+                className="flex items-center space-x-2"
+                onClick={closeMobileMenu}
+              >
+                <Image
+                  src="/logo1.webp"
+                  alt="Logo Light"
+                  width={32}
+                  height={32}
+                  className="h-20 w-20 dark:hidden"
+                  priority
+                />
+                <Image
+                  src="/logo2.webp"
+                  alt="Logo Dark"
+                  width={32}
+                  height={32}
+                  className="h-20 w-20 hidden dark:block"
+                  priority
+                />
+              </Link>
+              <button
+                onClick={closeMobileMenu}
+                className="p-2 rounded-full hover:bg-muted transition-colors"
+                aria-label="Close menu"
+              >
+                <X className="text-foreground h-5 w-5" />
+              </button>
+            </div>
 
-              {/* Mobile Nav */}
-              <div className="py-4 px-2">
-                <nav className="flex flex-col space-y-1">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="px-4 py-3 text-base font-medium text-foreground hover:bg-muted rounded-md"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        document.querySelector(item.href)?.scrollIntoView({
-                          behavior: "smooth",
-                        });
-                        closeMobileMenu();
-                      }}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </nav>
-              </div>
-
-              {/* Mobile CTA */}
-              <div className="mt-auto p-4 border-t border-border">
-                <Button className="w-full neumorphic-button-primary" asChild>
-                  <Link href="#features" onClick={closeMobileMenu}>
-                    Get Started
+            {/* Mobile Nav + Get Started */}
+            <div className="flex flex-col items-start px-6 py-6 space-y-6">
+              {navItems.map((item, i) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="w-full"
+                >
+                  <Link
+                    href={item.href}
+                    className="block w-full text-lg font-medium text-foreground hover:text-primary transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.querySelector(item.href)?.scrollIntoView({
+                        behavior: "smooth",
+                      });
+                      closeMobileMenu();
+                    }}
+                  >
+                    {item.name}
                   </Link>
-                </Button>
-              </div>
-            </motion.div>
+                </motion.div>
+              ))}
+
+              {/* CTA right below links */}
+              <Button className="w-full neumorphic-button-primary" asChild>
+                <Link href="#features" onClick={closeMobileMenu}>
+                  Get Started
+                </Link>
+              </Button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
