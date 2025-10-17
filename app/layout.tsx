@@ -11,7 +11,6 @@ import { PageTransition } from "@/components/page-transition"
 import "@/app/globals.css"
 import { Suspense } from "react"
 
-// Use only Google Fonts to avoid any local font references
 const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
